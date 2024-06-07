@@ -1,15 +1,16 @@
 import 'dart:async';
+import 'package:abmfbnigeria/widgets/review_card.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class ImageScroller extends StatefulWidget {
-  const ImageScroller({super.key});
+class ReviewCardScroller extends StatefulWidget {
+  const ReviewCardScroller({super.key});
 
   @override
-  State<ImageScroller> createState() => _ImageScrollerState();
+  State<ReviewCardScroller> createState() => _ReviewCardScroller();
 }
 
-class _ImageScrollerState extends State<ImageScroller>
+class _ReviewCardScroller extends State<ReviewCardScroller>
     with TickerProviderStateMixin {
   late PageController _pageViewController;
   late TabController _tabController;
@@ -18,9 +19,9 @@ class _ImageScrollerState extends State<ImageScroller>
   @override
   void initState() {
     _pageViewController = PageController();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
     Timer.periodic(const Duration(seconds: 5), (Timer timer) {
-      if (_tabController.index < 2) {
+      if (_tabController.index < 1) {
         _tabController.animateTo(_tabController.index + 1);
       } else {
         _tabController.animateTo(0);
@@ -55,24 +56,48 @@ class _ImageScrollerState extends State<ImageScroller>
       alignment: Alignment.bottomCenter,
       children: [
         SizedBox(
-          // height: 570,
           child: PageView(
             controller: _pageViewController,
             onPageChanged: _handlePageViewChanged,
-            children: <Widget>[
-              Image.asset(
-                'assets/images/image-1.jpg',
-                fit: BoxFit.fill,
+            children: const <Widget>[
+              Row(
+                children: [
+                  ReviewCard(
+                    nameAndRole: 'ADESANMI A. / Vendor',
+                    whatTheySaid:
+                        'AB has been very helpful in my business. The staff are very kind and go the extra length to even give me financial advice about my business. AB should keep up the good work.',
+                  ),
+                  ReviewCard(
+                    nameAndRole: 'Titilayo O. / Sales Woman',
+                    whatTheySaid:
+                        'I took my first loan with AB in Dec. 2020. I didn’t believe the process could be so fast. I got my loan in 3 days and I was very happy with that. I was able to get a bigger mixer for my business and this increased the volume of my production. I was also able to fix one of my delivery bikes that were bad. My business has improved and I look forward to doing more business with AB.',
+                  ),
+                  ReviewCard(
+                    nameAndRole: 'BALIKIS A. / Web designer',
+                    whatTheySaid:
+                        'AB has been of great help to my business. That I have a success story today in my business is AB ooooo. I have never regretted knowing AB',
+                  )
+                ],
               ),
-              Image.asset(
-                'assets/images/image-2.jpg',
-                fit: BoxFit.fill,
+              Row(
+                children: [
+                  ReviewCard(
+                    nameAndRole: 'STELLA E. / Business Woman',
+                    whatTheySaid:
+                        'I am a good customer with AB. The bank has been very supportive especially in my business. I also appreciate the bank because they are very considerate and understanding. The bank has really helped my business and I am very happy.',
+                  ),
+                  ReviewCard(
+                    nameAndRole: 'MATTHEW N. / Business Owner',
+                    whatTheySaid:
+                        'I have been taking loans from AB Microfinance bank for a long time, and I am very happy with the bank. The bank has been helping my business. Whenever I have financial challenges in my business AB is the bank I go to and I always get the financial help I need. ',
+                  ),
+                  ReviewCard(
+                    nameAndRole: 'CHIGOZIE N. / Marketing',
+                    whatTheySaid:
+                        'I have been a customer of AB for over 10 years now. I started with a loan of N270,000 but now my business has grown so much I take more than 2 million in loan from AB. I am grateful to AB because they are the story behind the success of my business today',
+                  )
+                ],
               ),
-              Image.asset(
-                'assets/images/image-3.jpg',
-                fit: BoxFit.fill,
-              ),
-              
             ],
           ),
         ),

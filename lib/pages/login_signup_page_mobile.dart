@@ -27,7 +27,7 @@ class LoginSignupPageMobile extends StatelessWidget {
                   child: GestureDetector(
                     // onTap: () => _launchURL(),
                     child: Image.asset(
-                      'assets/images/fidpen-logo.png',
+                      'assets/images/ab-logo.jpg',
                       height: 77,
                     ),
                   ),

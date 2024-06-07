@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:fidelitypensionsmanagers/constants/constants.dart';
-import 'package:fidelitypensionsmanagers/firebase_options.dart';
-import 'package:fidelitypensionsmanagers/pages/login_signup_page.dart';
+import 'package:abmfbnigeria/constants/constants.dart';
+import 'package:abmfbnigeria/firebase_options.dart';
+import 'package:abmfbnigeria/pages/login_signup_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Colors.white,
       ),
-      title: 'Fidelity Pension',
+      title: 'AB Microfinance Bank',
       home: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {

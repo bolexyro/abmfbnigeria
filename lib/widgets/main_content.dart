@@ -99,34 +99,41 @@ class _MainContentState extends State<MainContent> {
       child: Column(
         children: [
           const Gap(100),
-          Image.asset(
-            'assets/images/emoji.jpg',
-            height: 150,
-          ),
           const SizedBox(
             width: 240,
             child: Opacity(
               opacity: .5,
               child: Text(
-                'Welcome to Fidelity Pension',
+                'Log In',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w100,
-                  color: Color.fromARGB(255, 103, 106, 108),
-                ),
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
               ),
             ),
           ),
           const Gap(7),
-          const SizedBox(
+          SizedBox(
             width: 300,
-            child: Text(
-              'We remain committed to providing you the best service at all times.',
+            child: RichText(
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 13,
-                color: Color.fromARGB(255, 103, 106, 108),
+              text: const TextSpan(
+                text: 'We enable busineess ',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'growth and development.',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: kBlueColor,
+                      fontSize: 30,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -167,6 +174,27 @@ class _MainContentState extends State<MainContent> {
                     ),
                   ),
                 ),
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || !EmailValidator.validate(value)) {
+                      return 'Enter a valid email.';
+                    }
+                    return null;
+                  },
+                  onSaved: (newValue) => _enteredEmail = newValue,
+                  cursorColor: Colors.black,
+                  decoration: InputDecoration(
+                    hintText: 'Enter your Passwpord',
+                    errorText: _emailAddressSignInError,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(0),
+                      borderSide: const BorderSide(color: Colors.black),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -176,11 +204,11 @@ class _MainContentState extends State<MainContent> {
               children: [
                 const Spacer(),
                 const Text(
-                  'Remember Me',
+                  'Remember your password',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 13,
-                    color: Color.fromARGB(255, 103, 106, 108),
+                    color: Colors.black,
                   ),
                 ),
                 const Gap(10),
@@ -204,23 +232,29 @@ class _MainContentState extends State<MainContent> {
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
-                    backgroundColor: const Color.fromARGB(255, 21, 51, 44),
+                    backgroundColor: kBlueColor,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(3),
+                      borderRadius: BorderRadius.circular(7),
                     ),
                   ),
-                  child: !_isAuthenticating
-                      ? Text(widget.purpose == Purpose.forLogin
-                          ? 'Sign In'
-                          : 'Sign up')
-                      : LoadingAnimationWidget.discreteCircle(
-                          color: const Color.fromARGB(255, 201, 255, 203),
-                          secondRingColor:
-                              const Color.fromARGB(255, 114, 171, 115),
-                          thirdRingColor:
-                              const Color.fromARGB(255, 20, 133, 24),
-                          size: 20,
-                        ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    child: !_isAuthenticating
+                        ? Text(
+                            widget.purpose == Purpose.forLogin
+                                ? 'Sign In'
+                                : 'Sign up',
+                            style: const TextStyle(fontSize: 20),
+                          )
+                        : LoadingAnimationWidget.discreteCircle(
+                            color: const Color.fromARGB(255, 201, 255, 203),
+                            secondRingColor:
+                                const Color.fromARGB(255, 114, 153, 171),
+                            thirdRingColor:
+                                const Color.fromARGB(255, 20, 78, 133),
+                            size: 25,
+                          ),
+                  ),
                 ),
               );
             },
@@ -264,8 +298,8 @@ class _MainContentState extends State<MainContent> {
                         child: Text(
                       widget.purpose == Purpose.forLogin ? 'Sign up' : 'Log in',
                       style: const TextStyle(
-                        fontSize: 12,
-                        color: Color.fromARGB(255, 103, 106, 108),
+                        fontSize: 20,
+                        color: kBlueColor,
                       ),
                     )),
                   ),
@@ -275,7 +309,7 @@ class _MainContentState extends State<MainContent> {
           }),
           const Gap(10),
           const Text(
-            'Powered by Fidelity Pension Managers Limited © 2024 #RetireHappily',
+            '© 2024 AB Microfinance. All Rights Reserved. Licensed by the Central Bank of Nigeria.',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 11,

@@ -26,7 +26,7 @@ class MessageDialog extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(
-                    'assets/images/fidpen-logo.png',
+                    'assets/images/ab-logo.jpg',
                     height: 70,
                   ),
                   const Text(

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:abmfbnigeria/widgets/image_scroller.dart';
 import 'package:abmfbnigeria/widgets/main_content.dart';
+import 'package:abmfbnigeria/widgets/review_card_scroller.dart';
 
 import 'package:flutter/material.dart';
 import 'package:abmfbnigeria/constants/constants.dart';
@@ -24,7 +25,7 @@ class _LoginSignupPageDesktopState extends State<LoginSignupPageDesktop>
     with TickerProviderStateMixin {
   // Function to launch a URL in the web browser
   Future<void> _launchURL() async {
-    const url = 'https://www.fidelitypensionmanagers.com/Home';
+    const url = 'https://ab-mfbnigeria.com/';
     await launchUrl(
       Uri.parse(url),
       webOnlyWindowName: '_self',
@@ -41,13 +42,22 @@ class _LoginSignupPageDesktopState extends State<LoginSignupPageDesktop>
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const Text('Fidelity Pension'),
                 MouseRegion(
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
                     onTap: () => _launchURL(),
                     child: Image.asset(
-                      'assets/images/fidpen-logo.png',
+                      'assets/images/ab-logo.jpg',
+                      height: 77,
+                    ),
+                  ),
+                ),
+                MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    onTap: () => _launchURL(),
+                    child: Image.asset(
+                      'assets/images/cbn-logo.png',
                       height: 77,
                     ),
                   ),
@@ -80,6 +90,29 @@ class _LoginSignupPageDesktopState extends State<LoginSignupPageDesktop>
                 )
               ],
             ),
+            const ReviewCardScroller(),
+
+             RichText(
+              textAlign: TextAlign.center,
+              text: const TextSpan(
+                text: 'What people say about ',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'AB Microfinance',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: kBlueColor,
+                      fontSize: 30,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          
           ],
         ),
       ),
